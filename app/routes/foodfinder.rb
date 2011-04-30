@@ -9,16 +9,20 @@ class FoodFinder < Sinatra::Base
     haml :'index'
   end
 
-  delete '/' do
-    session[:oauth].delete
+  get '/logout' do
+    session[:foodfinder].delete if logged?
+    redirect '/'
   end
 
-  get '/auth' do
-    redirect client.request_token.authorize_url unless[:oauth]
+  get '/login' do
+    redirect '/' if logged?
+    redirect client.request_token.authorize_url
   end
 
   get '/auth/callback' do
     token, verifier = params['oauth_token'], params['oauth_verifier']
+    session[:foodfinder] = {:token => token, :verifier => verifier}
+    redirect '/'
   end
 
   private
@@ -33,6 +37,10 @@ class FoodFinder < Sinatra::Base
     oauth = Foursquare::OAuth.new('M3Z2OBWQB4RPYNY22S112I4DVI5W4VQB5LRDJRPGEK1LK5RO', '53BWA4J3YLU4ZEM2NNNAHFQMG0AOAZ3GRO25UBRD5OFAWGLC')
     oauth.set_callback_url redirect_uri
     oauth
+  end
+
+  def logged?
+    !!session[:foodfinder]
   end
 
 end

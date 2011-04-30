@@ -1,2 +1,8 @@
-%nav
-  %a.logout{:href => '#'} Logout
+%div{'data-role' => 'page'}
+  %div{'data-role' => 'header'}
+    %h1 
+      - if logged?
+        %a{:href => '/logout', :rel => 'external'} Take me out from here
+
+      - else
+        %a{:href => '/login', :rel => 'external'} Login with foursquare
