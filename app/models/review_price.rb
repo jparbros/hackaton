@@ -1,0 +1,2 @@
+class ReviewPrice < Review
+end
