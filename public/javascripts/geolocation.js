@@ -21,6 +21,6 @@ function handle_errors(error)
 }  
 
 function handle_geolocation_query(position){  
-  alert('Lat: ' + position.coords.latitude +  
-  ' Lon: ' + position.coords.latitude);  
+  document.cookie = 'foodfinder-lat=' + position.coords.latitude
+  document.cookie = 'foodfinder-lon=' + position.coords.longitude;  
 }
