@@ -8,4 +8,4 @@ ENV['RACK_ENV'] ||= 'development'
 
 Setup.start
 
-run Sinatra::Application
+run FoodFinder
