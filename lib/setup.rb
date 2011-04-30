@@ -4,6 +4,10 @@ class Setup
       load_libraries
       initialize_db
       load_app
+
+      configure do
+        set :haml, { :format => :html5 }
+      end
     end
 
     def load_app
