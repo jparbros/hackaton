@@ -1,0 +1,32 @@
+%div{'data-role' => 'page'}
+  %div{'data-role' => 'header'}
+    %h1
+      New Review
+  %div{'data-role' => 'content'}
+    %form{:action => '/reviews/create', :method => 'post'}
+      %div{'data-role' => "fieldcontain"}
+        %label{:for => "slider"}
+          Price:
+        %input{:type => 'hidden', :name => 'review[][type]', :value => 'price'}
+        %input{:type => 'range', :name => 'review[][rating]', :id => 'slider', :value => '0', :min => '0', :max => '5'}
+
+      %div{'data-role' => "fieldcontain"}
+        %label{:for => "slider"}
+          Food Quality:
+        %input{:type => 'hidden', :name => 'review[][type]', :value => 'food'}
+        %input{:type => 'range', :name => 'review[][rating]', :id => 'slider', :value => '0', :min => '0', :max => '5'}
+
+      %div{'data-role' => "fieldcontain"}
+        %label{:for => "slider"}
+          Services Quality:
+        %input{:type => 'hidden', :name => 'review[][type]', :value => 'service'}
+        %input{:type => 'range', :name => 'review[][rating]', :id => 'slider', :value => '0', :min => '0', :max => '5'}
+        
+      
+      %fieldset{:class => 'ui-grid-a'}
+        .ui-block-a
+          %button{:type => "cancel", 'data-theme' => 'd'}
+            Cancel
+        .ui-block-b
+          %button{:type => "submit", 'data-theme' => 'a'}
+            Submit

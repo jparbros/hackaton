@@ -1,0 +1,3 @@
+class ReviewFood < Review
+  
+end
