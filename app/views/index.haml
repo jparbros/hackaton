@@ -6,3 +6,7 @@
 
       - else
         %a{:href => '/login', :rel => 'external'} Login with foursquare
+
+  - if logged?
+    %div{'data-role' => 'content'}
+      %h2= "Welcome #{user.inspect}"
