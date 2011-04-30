@@ -4,7 +4,6 @@ class Setup
       load_libraries
       initialize_db
       load_app
-
     end
 
     def load_app
