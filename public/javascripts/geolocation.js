@@ -1,10 +1,6 @@
-$(document).ready(function(){
-  initiate_geolocation;
-})
-
-function initiate_geolocation() {  
-  navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);  
-}  
+$(window).ready(function(){
+  navigator.geolocation.getCurrentPosition(handle_geolocation_query,handle_errors);
+});
 
 function handle_errors(error)  
 {  
