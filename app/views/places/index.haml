@@ -1,0 +1,15 @@
+%div{'data-role' => 'page'}
+  %div{'data-role' => 'header'}
+    %h1
+      Places Near
+  %div{'data-role' => 'content'}
+    %ul{'data-role' => "listview", 'data-inset' => "true"}
+      - @places.each do |place|
+        %li
+          %a{:href => "/places/show/#{place.id}"}
+            %b
+              = place.name.to_s
+            %br
+            = place.address
+          
+          
