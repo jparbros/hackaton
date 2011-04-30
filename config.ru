@@ -9,4 +9,4 @@ ENV['RACK_ENV'] ||= 'development'
 Setup.start
 
 use Rack::Session::Cookie
-run FoodFinder
+run FoodFinder::Home

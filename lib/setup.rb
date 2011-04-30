@@ -18,6 +18,7 @@ class Setup
 
 
     def initialize_db
+      Mongoid.logger = Logger.new($stdout)
       Mongoid.configure do |config|
         if ENV['MONGOHQ_URL']
           conn = Mongo::Connection.from_uri(ENV['MONGOHQ_URL'])
