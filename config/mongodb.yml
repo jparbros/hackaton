@@ -1,0 +1,16 @@
+defaults: &defaults
+  host: 127.0.0.1
+  port: 27017
+
+development:
+  <<: *defaults
+  database: modcloth_development
+
+test:
+  <<: *defaults
+  database: modcloth_test
+
+# set these environment variables on your prod server
+production:
+  <<: *defaults
+  database: modcloth_prod
