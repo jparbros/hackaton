@@ -26,7 +26,6 @@ class FoodFinder < Sinatra::Base
   get '/auth/callback' do
     session[:foodfinder] = {:token => client.access_token(params[:code])}
     foursquare = ::Foursquare2::Base.new(client)
-    puts foursquare.venues_categories
     redirect '/'
   end
 
