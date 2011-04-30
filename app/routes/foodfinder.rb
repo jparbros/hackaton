@@ -5,12 +5,16 @@ class FoodFinder < Sinatra::Base
     set :public, 'public'
   end
 
+  before do
+    save_geolocation if logged?
+  end
+
   get '/' do
     haml :'index'
   end
 
   get '/logout' do
-    session[:foodfinder].delete if logged?
+    session[:foodfinder] = nil if logged?
     redirect '/'
   end
 
@@ -41,6 +45,12 @@ class FoodFinder < Sinatra::Base
 
   def logged?
     !!session[:foodfinder]
+  end
+
+  def save_geolocation
+    session[:foodfinder] ||= {}
+    session[:foodfinder][:latitude] = request.cookies['foodfinder-lat']
+    session[:foodfinder][:longitude] = request.cookies['foodfinder-lon']
   end
 
 end
