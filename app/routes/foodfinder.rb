@@ -5,6 +5,8 @@ class FoodFinder < Sinatra::Base
     set :public, 'public'
   end
 
+  helpers Helpers
+
   before do
     save_geolocation if logged?
   end
@@ -24,32 +26,9 @@ class FoodFinder < Sinatra::Base
   end
 
   get '/auth/callback' do
+    puts params.inspect
     session[:foodfinder] = {:token => client.access_token(params[:code])}
-    foursquare = ::Foursquare2::Base.new(client)
-    puts foursquare.venues_categories
+    puts session[:foodfinder].inspect
     redirect '/'
   end
-
-  private
-  def redirect_uri
-    uri = URI.parse(request.url)
-    uri.path = '/auth/callback'
-    uri.query = nil
-    uri.to_s
-  end
-
-  def client
-    @client ||= ::Foursquare2::OAuth2.new('M3Z2OBWQB4RPYNY22S112I4DVI5W4VQB5LRDJRPGEK1LK5RO', '53BWA4J3YLU4ZEM2NNNAHFQMG0AOAZ3GRO25UBRD5OFAWGLC', redirect_uri)
-  end
-
-  def logged?
-    !!session[:foodfinder]
-  end
-
-  def save_geolocation
-    session[:foodfinder] ||= {}
-    session[:foodfinder][:latitude] = request.cookies['foodfinder-lat']
-    session[:foodfinder][:longitude] = request.cookies['foodfinder-lon']
-  end
-
 end

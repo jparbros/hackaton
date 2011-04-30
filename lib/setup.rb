@@ -7,6 +7,7 @@ class Setup
     end
 
     def load_app
+      Dir["#{File.dirname(__FILE__)}/**/*.rb"].sort.each { |file| require file }
       Dir["#{File.dirname(__FILE__)}/../app/**/*.rb"].sort.each { |file| require file }
     end
 
