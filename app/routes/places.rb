@@ -31,7 +31,7 @@ class FoodFinder < Sinatra::Base
     @place.service_review = (ReviewService.where(:venue_id => @place.id).count > 0)? service_sum/ReviewService.where(:venue_id => @place.id).count : 0
     price_sum = 0
     ReviewPrice.where(:venue_id => @place.id).each {|review| price_sum += review.rating}
-    @place.service_review = (ReviewPrice.where(:venue_id => @place.id).count > 0)? price_sum / ReviewPrice.where(:venue_id => @place.id).count : 0
+    @place.price_review = (ReviewPrice.where(:venue_id => @place.id).count > 0)? price_sum / ReviewPrice.where(:venue_id => @place.id).count : 0
     haml :'places/show'
   end
 end
