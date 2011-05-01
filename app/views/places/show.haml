@@ -4,4 +4,11 @@
       = @place.name
       
   %div{'data-role' => 'content'}
+    %a{:href => "/checkins/create/#{@place.id}", 'data-role' => "button"}
+      Check In
+    = @place.address
+    %br
+    = @place.distance
+    %br
+    %img{:src => "#{@place.icon}"}
     

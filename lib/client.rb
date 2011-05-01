@@ -20,6 +20,17 @@ module Client
     @token = JSON.parse(response)['access_token']
     @token
   end
+  
+  def venues_search(ll,query,limit)
+    puts "#{API_URL}/venues/search?oauth_token=#{@token}&ll=#{ll}&query=#{query}&limit=#{limit}"
+    response = RestClient.get "#{API_URL}/venues/search?oauth_token=#{@token}&ll=#{ll}&query=#{query}&limit=#{limit}"
+    JSON.parse(response)['response']
+  end
+  
+  def find_venue(venue_id)
+    response = RestClient.get "#{API_URL}/venues/#{venue_id}?oauth_token=#{@token}"
+    JSON.parse(response)['response']
+  end
 
   def user
     response = RestClient.get "#{API_URL}/users/self?oauth_token=#{@token}"
