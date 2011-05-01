@@ -1,5 +1,9 @@
 class FoodFinder < Sinatra::Base
-  get '/checkins/create/:venue_id' do |venue_id|
-     
+  get '/checkins' do
+    haml :'checkins/index'
+  end
+
+  get '/checkins/:venue_id' do |venue_id|
+    haml :'checkins/show'
   end
 end
