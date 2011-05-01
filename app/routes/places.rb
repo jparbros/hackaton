@@ -2,7 +2,6 @@ class FoodFinder < Sinatra::Base
   get '/places' do
     @places = []
     places_hash = Client.venues_search("#{session[:foodfinder][:latitude]},#{session[:foodfinder][:longitude]}","food",10)
-    puts places_hash.inspect
     places_hash['groups'].first['items'].each do |item|
       address = item['location']['address'].to_s + ' ' + item['location']['crossStreet'].to_s
       place = Place.new({:id => item['id'], :name => item['name'], :address => address, :distance => item['location']['distance'] , :icon => item['categories'].first['icon']})
