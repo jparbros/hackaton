@@ -9,3 +9,10 @@
 
   - if logged?
     %div{'data-role' => 'content'}
+      %ul{'data-role' => "listview", 'data-theme' => "g"}
+        %li
+          %a{:href => "/places", :rel => 'external'} Places
+        %li
+          %a{:href => "/reviews", :rel => 'external'} Reviews
+        %li
+          %a{:href => "/checkins", :rel => 'external'} Checkins
