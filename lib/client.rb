@@ -31,6 +31,12 @@ module Client
     response = RestClient.get "#{API_URL}/venues/#{venue_id}?oauth_token=#{@token}"
     JSON.parse(response)['response']
   end
+  
+  def check_in(venue_id)
+    puts "#{API_URL}/checkins/add?oauth_token=#{@token}"
+    response = RestClient.post "#{API_URL}/checkins/add?oauth_token=#{@token}", :venueId => venue_id, :broadcast => 'public,facebook,twitter'
+    JSON.parse(response)['response']
+  end
 
   def user
     response = RestClient.get "#{API_URL}/users/self?oauth_token=#{@token}"

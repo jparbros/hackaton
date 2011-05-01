@@ -4,8 +4,10 @@
       = @place.name
       
   %div{'data-role' => 'content'}
-    %a{:href => "/checkins/create/#{@place.id}", 'data-role' => "button"}
-      Check In
+    %form{:action => '/checkins', :method => 'post'}
+      %input{:type => 'hidden', :name => 'venue_id', :value => @place.id}
+      %button{:type => "submit", 'data-theme' => 'a'}
+        Check In
     = @place.address
     %br
     = @place.distance
