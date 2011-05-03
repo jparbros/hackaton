@@ -17,7 +17,6 @@ class Setup
       Bundler.require(:default, ENV['RACK_ENV'])
     end
 
-
     def initialize_db
       Mongoid.logger = Logger.new($stdout)
       Mongoid.configure do |config|
