@@ -1,0 +1,14 @@
+.star-rating {
+  background: url('../images/alt_star.gif') top left repeat-x;
+  height: 25px;
+  margin: 0 auto;
+  padding: 0;
+  width: 125px;
+}
+
+.current-rating {
+  background: url('../images/alt_star.gif') left center repeat-x;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+}

@@ -64,4 +64,8 @@ class Place
     (food_review+price_review+service_review)/3
   end
   
+  def rating_in_pixel(rating_type)
+    (send(rating_type)*125)/5
+  end
+  
 end

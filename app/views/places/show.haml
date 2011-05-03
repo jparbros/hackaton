@@ -4,6 +4,9 @@
       = @place.name
       
   %div{'data-role' => 'content'}
+    %div{:class => 'star-rating'}
+      %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('review_avg')}px"}
+    
     %form{:action => '/checkins', :method => 'post'}
       %input{:type => 'hidden', :name => 'venue_id', :value => @place.id}
       %button{:type => "submit", 'data-theme' => 'a'}
@@ -14,10 +17,16 @@
     %br
     %img{:src => "#{@place.icon}"}
     %hr
-    Price: 
-    = @place.price_review
-    Service: 
-    = @place.service_review
-    Food:
-    = @place.food_review
+    %h2
+      Price
+    %div{:class => 'star-rating'}
+      %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('price_review')}px"}
+    %h2
+      Service
+    %div{:class => 'star-rating'}
+      %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('service_review')}px"}
+    %h2
+      Food
+    %div{:class => 'star-rating'}
+      %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('food_review')}px"}
     
