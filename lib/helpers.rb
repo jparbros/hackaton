@@ -18,5 +18,9 @@ module Helpers
     session[:foodfinder][:latitude] = request.cookies['foodfinder-lat']
     session[:foodfinder][:longitude] = request.cookies['foodfinder-lon']
   end
+  
+  def save_token
+    Client.token= session[:foodfinder][:token] if session[:foodfinder] and session[:foodfinder][:token] and Client.token.nil?
+  end
 
 end

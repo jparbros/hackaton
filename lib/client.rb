@@ -17,29 +17,36 @@ module Client
       "&redirect_uri=#{redirect_uri}" +
       "&code=#{code}"
 
-    @token = JSON.parse(response)['access_token']
+    token= JSON.parse(response)['access_token']
+    token
+  end
+  
+  def token
     @token
   end
   
+  def token=(token_)
+    @token = token_
+  end
+  
   def venues_search(ll,query,limit)
-    puts "#{API_URL}/venues/search?oauth_token=#{@token}&ll=#{ll}&query=#{query}&limit=#{limit}"
-    response = RestClient.get "#{API_URL}/venues/search?oauth_token=#{@token}&ll=#{ll}&query=#{query}&limit=#{limit}"
+    response = RestClient.get "#{API_URL}/venues/search?oauth_token=#{token}&ll=#{ll}&query=#{query}&limit=#{limit}"
     JSON.parse(response)['response']
   end
   
   def find_venue(venue_id)
-    response = RestClient.get "#{API_URL}/venues/#{venue_id}?oauth_token=#{@token}"
+    response = RestClient.get "#{API_URL}/venues/#{venue_id}?oauth_token=#{token}"
     JSON.parse(response)['response']
   end
   
   def check_in(venue_id)
-    puts "#{API_URL}/checkins/add?oauth_token=#{@token}"
-    response = RestClient.post "#{API_URL}/checkins/add?oauth_token=#{@token}", :venueId => venue_id, :broadcast => 'public,facebook,twitter'
+    response = RestClient.post "#{API_URL}/checkins/add?oauth_token=#{token}", :venueId => venue_id, :broadcast => 'public,facebook,twitter'
     JSON.parse(response)['response']
   end
 
   def user
-    response = RestClient.get "#{API_URL}/users/self?oauth_token=#{@token}"
+    puts ">>>>>>>> #{self.token}"
+    response = RestClient.get "#{API_URL}/users/self?oauth_token=#{token}"
     JSON.parse(response)
   end
 

@@ -3,6 +3,7 @@ class Setup
     def start
       load_libraries
       initialize_db
+      config_sessions
       load_app
     end
 
@@ -32,7 +33,7 @@ class Setup
     end
     
     def config_sessions
-      use Rack::Session::Mongo, :connection => config.master, :expire_after => 1800
+      Sinatra::Base.use Rack::Session::Mongo, :connection => Mongoid.config.master.connection, :expire_after => 1800, :db => "foodfinder#{settings.environment}"
     end
 
   end

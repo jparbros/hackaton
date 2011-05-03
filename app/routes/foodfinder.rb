@@ -9,6 +9,7 @@ class FoodFinder < Sinatra::Base
 
   before do
     save_geolocation if logged?
+    save_token
   end
 
   get '/' do
@@ -28,6 +29,7 @@ class FoodFinder < Sinatra::Base
   get '/auth/callback' do
     session[:foodfinder] = 
       {:token => Client.access_token(redirect_uri, params['code'])}
+    save_token
     session[:foodfinder][:user] = Client.user
     redirect '/'
   end
