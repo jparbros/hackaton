@@ -30,6 +30,12 @@ class Setup
         end
       end
     end
+    
+    def config_sessions
+      use Rack::Session::Mongo, :connection => config.master, :expire_after => 1800
+    end
 
   end
 end
+
+Setup.start

@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'sinatra'
-gem 'mongoid'
 gem 'haml'
 gem 'json'
+gem 'mongoid'
+gem 'mongo-store'
 gem 'rest-client'
+gem 'sinatra'
