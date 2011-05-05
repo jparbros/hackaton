@@ -1,0 +1,11 @@
+%div{'data-role' => 'page'}
+  %div{'data-role' => 'header'}
+    %h1
+      Check In
+      = @place.name
+      
+  %div{'data-role' => 'content'}
+    = @place.address
+
+    %div{'data-role' => "fieldcontain"}
+      %textarea{:cols => 40, :rows => 8, :name => "textarea"}

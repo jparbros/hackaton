@@ -28,7 +28,7 @@ module Client
   end
   
   def venues_search(ll,query,limit)
-    response = RestClient.get "#{API_URL}/venues/search?oauth_token=#{token}&ll=#{ll}&query=#{query}&limit=#{limit}"
+    response = RestClient.get "#{API_URL}/venues/search?oauth_token=#{token}&ll=#{ll}&query=#{CGI.escape(query)}&limit=#{limit}"
     JSON.parse(response)['response']
   end
   
