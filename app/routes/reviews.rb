@@ -1,4 +1,4 @@
-class FoodFinder < Sinatra::Base
+class FoodFinder::App < Sinatra::Base
   get '/reviews/new' do
     haml :'reviews/new'
   end

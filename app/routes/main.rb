@@ -1,4 +1,4 @@
-class FoodFinder < Sinatra::Base
+class FoodFinder::App < Sinatra::Base
   configure do
     set :haml, { :format => :html5 }
     set :views, 'app/views'

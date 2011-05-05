@@ -1,4 +1,4 @@
-class FoodFinder < Sinatra::Base
+class FoodFinder::App < Sinatra::Base
   get '/checkins' do
     haml :'checkins/index'
   end
@@ -8,9 +8,9 @@ class FoodFinder < Sinatra::Base
   end
 
   post '/checkins' do
-     response = Client.check_in params[:venue_id]
-     CheckIn.create :checkin_id => response['checkin']['id'], 
-                    :user_id => session[:foodfinder]['user']['response']['user']['id']
-     redirect '/'
+    response = Client.check_in params[:venue_id]
+    CheckIn.create :checkin_id => response['checkin']['id'], 
+      :user_id => session[:foodfinder]['user']['response']['user']['id']
+        redirect '/'
   end
 end

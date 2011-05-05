@@ -1,4 +1,4 @@
-class FoodFinder < Sinatra::Base
+class FoodFinder::App < Sinatra::Base
   get '/places' do
     @places = []
     places_hash = Client.venues_search("#{session[:foodfinder][:latitude]},#{session[:foodfinder][:longitude]}","food",10)

@@ -1,8 +1,5 @@
 require 'rubygems'
-require 'rake/testtask'
 require 'bundler'
-
-task :default => :test
 
 desc "Console"
 task :console do
