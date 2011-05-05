@@ -10,5 +10,13 @@ module FoodFinder::Config
       @db_name ||= URI.parse(ENV['MONGOHQ_URL']).path.gsub(/^\//, '')
     end
 
+    def client_id
+      'OV2JAFIF2GDGDROUREBHZXGVXYEONWYMC3XRKYRESWWD5JA0'
+    end
+
+    def secret
+      'SQYIFHNYNBVV02VBG23G2MHCZHAU0QTRUTIR2Q344O14EFEC'
+    end
+
   end
 end

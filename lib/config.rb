@@ -19,14 +19,6 @@ module FoodFinder
         raise "you must implement #{__method__} method"
       end
 
-      def auth_url
-        raise "you must implement #{__method__} method"
-      end
-
-      def api_url
-        raise "you must implement #{__method__} method"
-      end
-
       def client_id
         raise "you must implement #{__method__} method"
       end

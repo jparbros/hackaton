@@ -10,14 +10,6 @@ module FoodFinder::Config
       "foodfinder"
     end
 
-    def auth_url
-      'https://foursquare.com/oauth2'
-    end
-
-    def api_url
-      "https://api.foursquare.com/v2"
-    end
-
     def client_id
       'M3Z2OBWQB4RPYNY22S112I4DVI5W4VQB5LRDJRPGEK1LK5RO'
     end
