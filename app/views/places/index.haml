@@ -7,9 +7,13 @@
       - @places.each do |place|
         %li
           %a{:href => "/places/show/#{place.id}"}
-            %b
-              = place.name.to_s
-            %br
-            = place.address
+            %div{:style => 'float:left'}
+              %b
+                = place.name.to_s
+              %br
+              = place.address
+            %div{:style => 'float:left'}
+              %div{:class => 'star-rating'}
+                %div{:class => 'current-rating', :style => "width:#{place.rating_in_pixel('review_avg')}px"}
           
           

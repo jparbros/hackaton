@@ -7,10 +7,9 @@
     %div{:class => 'star-rating'}
       %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('review_avg')}px"}
     
-    %form{:action => '/checkins', :method => 'post'}
-      %input{:type => 'hidden', :name => 'venue_id', :value => @place.id}
-      %button{:type => "submit", 'data-theme' => 'a'}
-        Check In
+    %a{:href => "/checkins/#{@place.id}/new", 'data-role' => "button", 'data-theme' => 'a'}
+      Check In
+      
     = @place.address
     %br
     = @place.distance
