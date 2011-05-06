@@ -12,7 +12,7 @@ class Setup
       $LOAD_PATH.unshift dir
       libraries = File.join dir, '*.rb'
       app = File.join dir, '..', 'app', '**', '*.rb'
-      Dir[libraries, app].each { |file| require file }
+      Dir[libraries, app].sort.each { |file| require file }
     end
 
     def load_libraries
