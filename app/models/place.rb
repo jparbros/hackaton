@@ -1,11 +1,11 @@
 class Place
-  attr_accessor :id, :name, :address, :distance, :icon, :food_review, :service_review, :price_review
+  attr_accessor :id, :name, :address, :distance, :food_review, :service_review, :price_review
 
   class << self
 
     def create(attrs = {})
       address = attrs['location']['address'].to_s + ' ' + attrs['location']['crossStreet'].to_s
-      self.new(:id => attrs['id'], :name => attrs['name'], :address => address, :distance => attrs['location']['distance'] , :icon => attrs['categories'].first['icon'])
+      self.new(:id => attrs['id'], :name => attrs['name'], :address => address, :distance => attrs['location']['distance'])
     end
   end
 
