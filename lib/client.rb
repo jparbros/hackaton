@@ -1,24 +1,16 @@
 module Client
   extend self
 
-  AUTH_URL = 'https://foursquare.com/oauth2'
   API_URL = "https://api.foursquare.com/v2"
 
-  def authenticate(redirect_uri)
-    "#{AUTH_URL}/authenticate?client_id=#{FoodFinder::Config.client_id}&response_type=code&redirect_uri=#{redirect_uri}"
+  def client
+    OAuth2::Client.new(FoodFinder::Config.client_id, 
+      FoodFinder::Config.secret, 
+      :site => 'https://foursquare.com',
+      :authorize_url => '/oauth2/authenticate',
+      :access_token_url => '/oauth2/access_token')
   end
 
-  def access_token(redirect_uri, code)
-    response = RestClient.get "#{AUTH_URL}/access_token?client_id=#{FoodFinder::Config.client_id}" +
-      "&client_secret=#{FoodFinder::Config.secret}" +
-      "&grant_type=authorization_code" +
-      "&redirect_uri=#{redirect_uri}" +
-      "&code=#{code}"
-
-    token= JSON.parse(response)['access_token']
-    token
-  end
-  
   def token
     @token
   end

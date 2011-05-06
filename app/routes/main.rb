@@ -22,15 +22,21 @@ class FoodFinder::App < Sinatra::Base
   end
 
   get '/login' do
-    redirect '/' if logged?
-    redirect Client.authenticate redirect_uri
+    redirect Client.client.web_server.
+      authorize_url(:redirect_uri => redirect_uri)
   end
 
   get '/auth/callback' do
+    access_token = Client.client.web_server.get_access_token(
+      params[:code], :redirect_uri => redirect_uri
+    )
+    Client.token = access_token.token
     session[:foodfinder] = 
-      {:token => Client.access_token(redirect_uri, params['code'])}
+      {:token => Client.token}
     save_token
     session[:foodfinder][:user] = Client.user
     redirect '/'
   end
+
+  
 end
