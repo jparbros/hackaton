@@ -2,10 +2,34 @@
   %div{'data-role' => 'header'}
     %h1
       Check In
-      = @place.name
+      
       
   %div{'data-role' => 'content'}
+    %h2
+      = @place.name
     = @place.address
 
-    %div{'data-role' => "fieldcontain"}
-      %textarea{:cols => 40, :rows => 8, :name => "textarea"}
+    %form{:action => "/checkin/#{@place.id}", :method => 'post'}
+    
+      %div{'data-role' => "fieldcontain"}
+        %textarea{:cols => 40, :rows => 8, :name => "message", :id => 'message'}
+    
+    
+      %div{'data-role' => "fieldcontain"}
+        %label{:for => "slider"}
+          Share with friends:
+        %select{:name => "slider", :id => "slider", 'data-role' => "slider"}
+          %option{:value => "off"}
+            Off
+          %option{:value => "on"}
+            On
+      
+      %div{'data-role' => "fieldcontain"}>
+        %button{:type => "submit", 'data-theme' => 'a'}
+          Check In  
+
+      %script{:type => 'text/javascript'}
+        $("#message").charCount({
+        allowed: 140,
+        warning: 25,
+        });

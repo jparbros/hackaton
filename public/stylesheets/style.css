@@ -12,3 +12,15 @@
   margin: 0;
   padding: 0;
 }
+
+form .counter{
+  position:absolute;
+  right:0;
+  top:0;
+  font-size:20px;
+  font-weight:bold;
+  color:#ccc;
+}
+
+form .warning{color:#600;}	
+form .exceeded{color:#e00;}
