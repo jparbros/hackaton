@@ -1,20 +1,16 @@
 %div{'data-role' => 'page'}
   %div{'data-role' => 'header'}
     %h1
-      = @place.name
-      
+      &nbsp;
   %div{'data-role' => 'content'}
     %div{:class => 'star-rating'}
       %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('review_avg')}px"}
-    
-    %a{:href => "/checkins/#{@place.id}/new", 'data-role' => "button", 'data-theme' => 'a'}
-      Check In
       
+    %h1
+      = @place.name  
     = @place.address
     %br
     = @place.distance
-    %br
-    %img{:src => "#{@place.icon}"}
     %hr
     %h2
       Price
@@ -29,3 +25,5 @@
     %div{:class => 'star-rating'}
       %div{:class => 'current-rating', :style => "width:#{@place.rating_in_pixel('food_review')}px"}
     
+    %a{:href => "/checkins/#{@place.id}/new", 'data-role' => "button", 'data-theme' => 'a'}
+      Check In
